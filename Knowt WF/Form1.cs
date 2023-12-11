@@ -12,6 +12,7 @@ namespace Knowt_WF
 {
     public partial class Form1 : Form
     {
+        int IOCount = 0;
 
         public Form1()
         {
@@ -25,12 +26,14 @@ namespace Knowt_WF
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
-
+            IOCount++;
+            textBox1.Text = IOCount.ToString();
         }
 
         private void richTextBox2_KeyDown(object sender, KeyEventArgs e)
         {
             string PreviewText = richTextBox1.Text;
+            TerminalCommand command = new TerminalCommand();
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
@@ -41,6 +44,14 @@ namespace Knowt_WF
             }
         }
 
-        
+        private void label2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Displays number of Input & Output in Terminal (Session)", "Session IO Counter");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
